@@ -14,6 +14,11 @@
 		4A87020E2A2A176700500A4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A87020D2A2A176700500A4A /* Assets.xcassets */; };
 		4A8702112A2A176700500A4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A87020F2A2A176700500A4A /* LaunchScreen.storyboard */; };
 		4A8702192A2A18D700500A4A /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8702182A2A18D700500A4A /* TabView.swift */; };
+		4A87021B2A2A233100500A4A /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A87021A2A2A233100500A4A /* LabelViewController.swift */; };
+		4A87021D2A2A291900500A4A /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A87021C2A2A291900500A4A /* UIPageViewController+Extension.swift */; };
+		4AEEEF862A2B453500C74475 /* PagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEEEF852A2B453500C74475 /* PagerView.swift */; };
+		4AEEEF882A2B51CF00C74475 /* ScrollFitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEEEF872A2B51CF00C74475 /* ScrollFitable.swift */; };
+		4AEEEF8E2A2B605900C74475 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEEEF8D2A2B605900C74475 /* UIScrollView+Extension.swift */; };
 		555CD1EC44E7EA24597E9EEB /* Pods_ExPagerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFA04BC9AE6B54E8C039C3F /* Pods_ExPagerView.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +34,11 @@
 		4A8702102A2A176700500A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A8702122A2A176700500A4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A8702182A2A18D700500A4A /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		4A87021A2A2A233100500A4A /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
+		4A87021C2A2A291900500A4A /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
+		4AEEEF852A2B453500C74475 /* PagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerView.swift; sourceTree = "<group>"; };
+		4AEEEF872A2B51CF00C74475 /* ScrollFitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollFitable.swift; sourceTree = "<group>"; };
+		4AEEEF8D2A2B605900C74475 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		8F19493B6FAD09B2275B2470 /* Pods-ExPagerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExPagerView.debug.xcconfig"; path = "Target Support Files/Pods-ExPagerView/Pods-ExPagerView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +87,11 @@
 				4A8702042A2A176600500A4A /* AppDelegate.swift */,
 				4A8702062A2A176600500A4A /* SceneDelegate.swift */,
 				4A8702082A2A176600500A4A /* ViewController.swift */,
+				4AEEEF8D2A2B605900C74475 /* UIScrollView+Extension.swift */,
+				4AEEEF872A2B51CF00C74475 /* ScrollFitable.swift */,
+				4AEEEF852A2B453500C74475 /* PagerView.swift */,
+				4A87021C2A2A291900500A4A /* UIPageViewController+Extension.swift */,
+				4A87021A2A2A233100500A4A /* LabelViewController.swift */,
 				4A8702182A2A18D700500A4A /* TabView.swift */,
 				4A87020A2A2A176600500A4A /* Main.storyboard */,
 				4A87020D2A2A176700500A4A /* Assets.xcassets */,
@@ -209,7 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEEEF862A2B453500C74475 /* PagerView.swift in Sources */,
 				4A8702092A2A176600500A4A /* ViewController.swift in Sources */,
+				4A87021D2A2A291900500A4A /* UIPageViewController+Extension.swift in Sources */,
+				4A87021B2A2A233100500A4A /* LabelViewController.swift in Sources */,
+				4AEEEF8E2A2B605900C74475 /* UIScrollView+Extension.swift in Sources */,
+				4AEEEF882A2B51CF00C74475 /* ScrollFitable.swift in Sources */,
 				4A8702052A2A176600500A4A /* AppDelegate.swift in Sources */,
 				4A8702192A2A18D700500A4A /* TabView.swift in Sources */,
 				4A8702072A2A176600500A4A /* SceneDelegate.swift in Sources */,

@@ -9,26 +9,21 @@ import UIKit
 import Then
 import SnapKit
 
-protocol TabViewDataSource: AnyObject {
-    var items: [String] { get }
-}
-
-protocol TabViewDelegate: AnyObject {
-    func didTap(index: Int)
-}
-
 final class TabView: UIView {
     // MARK: UI
     private let stackView = UIStackView().then {
+        $0.spacing = 16
         $0.axis = .horizontal
     }
-    private let scrollView = UIScrollView()
+    private let tabScrollView = UIScrollView().then {
+        $0.showsHorizontalScrollIndicator = false
+    }
     
     // MARK: Property
-    weak var dataSource: TabViewDataSource? {
+    var dataSource: [String]? {
         didSet { setItems() }
     }
-    weak var delegate: TabViewDelegate?
+    var didTap: ((Int) -> Void)?
     
     // MARK: Initializer
     required init() {
@@ -41,10 +36,10 @@ final class TabView: UIView {
     
     // MARK: Method
     private func configure() {
-        addSubview(scrollView)
-        scrollView.addSubview(stackView)
+        addSubview(tabScrollView)
+        tabScrollView.addSubview(stackView)
         
-        scrollView.snp.makeConstraints {
+        tabScrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         stackView.snp.makeConstraints {
@@ -53,7 +48,7 @@ final class TabView: UIView {
     }
     
     private func setItems() {
-        guard let items = dataSource?.items else { return }
+        guard let items = dataSource else { return }
         items
             .enumerated()
             .forEach { offset, item in
@@ -74,6 +69,19 @@ final class TabView: UIView {
     
     @objc private func tapItem(sender: UITapGestureRecognizer) {
         guard let tag = sender.view?.tag else { return }
-        delegate?.didTap(index: tag)
+        didTap?(tag)
+    }
+    
+    func updateScroll() {
+        
+    }
+}
+
+extension TabView: ScrollFitable {
+    var scrollView: UIScrollView {
+        tabScrollView
+    }
+    var countOfItems: Int {
+        dataSource?.count ?? 0
     }
 }

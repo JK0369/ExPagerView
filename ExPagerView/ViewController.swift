@@ -10,31 +10,48 @@ import Then
 import SnapKit
 
 class ViewController: UIViewController {
+    // tab
     private let tabView = TabView()
-    var dataSource = (0...20).map(String.init)
     
+    // page
+    private lazy var pagerView: PagerView = {
+        return PagerView(items: self.items)
+    }()
+    
+    private let items = (0...20).map(String.init)
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabView.dataSource = self
-        tabView.delegate = self
-        
+        tabView.dataSource = items
+        setupLayout()
+        handleScroll()
+    }
+    
+    private func setupLayout() {
         view.addSubview(tabView)
+        view.addSubview(pagerView)
+        
         tabView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(80)
         }
+        pagerView.snp.makeConstraints {
+            $0.top.equalTo(tabView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
-}
-
-extension ViewController: TabViewDataSource {
-    var items: [String] {
-        dataSource
-    }
-}
-
-extension ViewController: TabViewDelegate {
-    func didTap(index: Int) {
+    
+    private func handleScroll() {
+        tabView.didTap = { [weak self] index in
+            guard let self else { return }
+            print("didTap", index)
+            pagerView.scroll(to: index)
+        }
         
+        pagerView.didScrollByManual = { [weak self] ratioX in
+            guard let self else { return }
+            tabView.scroll(to: ratioX)
+        }
     }
 }
