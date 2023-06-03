@@ -43,14 +43,23 @@ class ViewController: UIViewController {
     }
     
     private func handleScroll() {
+        tabView.syncUnderlineView(index: 0, underlineView: tabView.highlightView)
+        
         tabView.didTap = { [weak self] index in
             guard let self else { return }
             pagerView.scroll(to: index)
+            tabView.syncUnderlineView(index: index, underlineView: tabView.highlightView)
         }
         
         pagerView.didScroll = { [weak self] ratioX in
             guard let self else { return }
             tabView.scroll(to: ratioX)
+            tabView.syncUnderlineView(ratio: ratioX, underlineView: tabView.highlightView)
+        }
+        
+        pagerView.didEndScroll = { [weak self] index in
+            guard let self else { return }
+            tabView.syncUnderlineView(index: index, underlineView: tabView.highlightView)
         }
     }
 }

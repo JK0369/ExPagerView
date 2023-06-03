@@ -18,6 +18,10 @@ final class TabView: UIView {
     private let tabScrollView = UIScrollView().then {
         $0.showsHorizontalScrollIndicator = false
     }
+    let highlightView = UIView().then {
+        $0.backgroundColor = .gray
+    }
+    private var contentLabels = [UILabel]()
     
     // MARK: Property
     var dataSource: [String]? {
@@ -38,12 +42,19 @@ final class TabView: UIView {
     private func configure() {
         addSubview(tabScrollView)
         tabScrollView.addSubview(stackView)
+        tabScrollView.addSubview(highlightView)
         
         tabScrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         stackView.snp.makeConstraints {
             $0.edges.height.equalToSuperview()
+        }
+        highlightView.snp.remakeConstraints {
+            $0.width.equalTo(0)
+            $0.height.equalTo(8)
+            $0.leading.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     
@@ -64,6 +75,7 @@ final class TabView: UIView {
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapItem))
                 label.addGestureRecognizer(tapGesture)
                 self.stackView.addArrangedSubview(label)
+                self.contentLabels.append(label)
             }
     }
     
@@ -71,13 +83,13 @@ final class TabView: UIView {
         guard let tag = sender.view?.tag else { return }
         didTap?(tag)
     }
-    
-    func updateScroll() {
-        
-    }
 }
 
 extension TabView: ScrollFitable {
+    var tabContentViews: [UIView] {
+        contentLabels
+    }
+    
     var scrollView: UIScrollView {
         tabScrollView
     }
