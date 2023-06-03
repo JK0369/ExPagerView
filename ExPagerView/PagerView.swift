@@ -72,9 +72,6 @@ extension PagerView: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollingByUser else { return }
         let ratioX = scrollView.contentOffset.x / scrollView.contentSize.width
-        
-        // 핵심: isPaging = false로 하고 이것을 다 반영하면 스크롤이 뒤로갔다가 앞으로갔다가 하므로 따로 처리가 필요함
-        // TODO:
         didScroll?(ratioX)
     }
     

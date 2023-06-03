@@ -113,6 +113,7 @@ extension ScrollFitable {
     }
 }
 
+// 핵심: 스크롤을 원하는 곳의 중앙에 위치시킴 (https://ios-development.tistory.com/1262)
 private extension UIScrollView {
     func scroll(rect: CGRect, animated: Bool) {
         let origin = CGPoint(
