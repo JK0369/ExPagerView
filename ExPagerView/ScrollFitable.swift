@@ -11,7 +11,6 @@ import UIKit
 protocol ScrollFitable: AnyObject {
     var scrollView: UIScrollView { get }
     var countOfItems: Int { get }
-//    var tabBarView: UIView? { get }
     
     func scroll(to index: Int)
     func scroll(to ratio: Double)

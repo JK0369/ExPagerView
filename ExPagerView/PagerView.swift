@@ -31,6 +31,7 @@ final class PagerView: UIView {
     
     private let items: [String]
     var didScroll: ((Double) -> ())?
+    var scrollingByUser = false
     
     init(items: [String]) {
         self.items = items
@@ -70,7 +71,18 @@ extension PagerView: UICollectionViewDataSource {
 extension PagerView: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let ratioX = scrollView.contentOffset.x / scrollView.contentSize.width
+        guard scrollingByUser else { return }
         didScroll?(ratioX)
+    }
+    
+    // 핵심: 손으로 드래깅 시작
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("begin")
+        scrollingByUser = true
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollingByUser = false
     }
 }
 
