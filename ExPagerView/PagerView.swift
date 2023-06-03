@@ -52,8 +52,6 @@ final class PagerView: UIView {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-        collectionView.setTrackingScroll()
     }
 }
 
