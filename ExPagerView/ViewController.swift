@@ -45,11 +45,10 @@ class ViewController: UIViewController {
     private func handleScroll() {
         tabView.didTap = { [weak self] index in
             guard let self else { return }
-            print("didTap", index)
             pagerView.scroll(to: index)
         }
         
-        pagerView.didScrollByManual = { [weak self] ratioX in
+        pagerView.didScroll = { [weak self] ratioX in
             guard let self else { return }
             tabView.scroll(to: ratioX)
         }

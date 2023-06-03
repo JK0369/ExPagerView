@@ -30,8 +30,7 @@ final class PagerView: UIView {
     }()
     
     private let items: [String]
-    var didScrollByManual: ((Double) -> ())?
-    var isManualScrolled = false
+    var didScroll: ((Double) -> ())?
     
     init(items: [String]) {
         self.items = items
@@ -71,16 +70,7 @@ extension PagerView: UICollectionViewDataSource {
 extension PagerView: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let ratioX = scrollView.contentOffset.x / scrollView.contentSize.width
-        print("test PagerView")
-        guard isManualScrolled else { return }
-        didScrollByManual?(ratioX)
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        isManualScrolled = true
-    }
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        isManualScrolled = false
+        didScroll?(ratioX)
     }
 }
 

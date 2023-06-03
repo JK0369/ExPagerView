@@ -40,10 +40,9 @@ extension ScrollFitable {
     
     private func getTargetRect(ratio: Double) -> CGRect {
         let totalWidth = scrollView.contentSize.width
-        let centerWidthPerItem = totalWidth / Double(countOfItems) / 2
         
         let rect = CGRect(
-            x: totalWidth * ratio - centerWidthPerItem,
+            x: totalWidth * ratio,
             y: scrollView.frame.minY,
             width: scrollView.frame.width,
             height: scrollView.frame.height
