@@ -66,7 +66,7 @@ final class TabView: UIView {
                 let label = UILabel().then {
                     $0.text = item
                     $0.numberOfLines = 0
-                    $0.font = .systemFont(ofSize: 16, weight: .regular)
+                    $0.font = .systemFont(ofSize: 14, weight: .regular)
                     $0.textColor = .black
                     $0.textAlignment = .center
                     $0.isUserInteractionEnabled = true

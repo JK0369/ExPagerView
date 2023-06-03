@@ -45,12 +45,12 @@ extension ScrollFitable {
 
     func scroll(to index: Int) {
         let offset = getStartOffset(index: index)
-        scrollView.setContentOffset(offset, animated: true)
+        scrollView.setContentOffset(offset, animated: false)
     }
     
     func scroll(to ratio: Double) {
         let rect = getTargetRect(ratio: ratio)
-        scrollView.scrollRectToVisible(rect, animated: true)
+        scrollView.scroll(rect: rect, animated: true)
     }
     
     // 핵심: 뷰 기준으로 해야 width값을 뷰의 동적 사이즈 대응이 가능
@@ -110,5 +110,17 @@ extension ScrollFitable {
             height: scrollView.frame.height
         )
         return rect
+    }
+}
+
+private extension UIScrollView {
+    func scroll(rect: CGRect, animated: Bool) {
+        let origin = CGPoint(
+            x: rect.origin.x - (frame.width - rect.size.width) / 2,
+            y: rect.origin.y - (frame.height - rect.size.height) / 2
+        )
+        let rect = CGRect(origin: origin, size: frame.size)
+        
+        scrollRectToVisible(rect, animated: animated)
     }
 }

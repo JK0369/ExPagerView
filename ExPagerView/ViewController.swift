@@ -18,7 +18,16 @@ class ViewController: UIViewController {
         return PagerView(items: self.items)
     }()
     
-    private let items = (0...20).map(String.init)
+    private let items = [
+        "jake",
+        "iOS 앱 개발 알아가기",
+        "PagerView 예제",
+        "UICollectionView 사용",
+        "protocol 지향 프로그래밍",
+        "iOS",
+        "아이폰",
+        "Scroll 처리"
+    ]
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +43,7 @@ class ViewController: UIViewController {
         
         tabView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(80)
+            $0.height.equalTo(50)
         }
         pagerView.snp.makeConstraints {
             $0.top.equalTo(tabView.snp.bottom)
