@@ -35,6 +35,14 @@ extension ScrollFitable {
         []
     }
     
+    /* 스크롤 처리 2단계로 하는 이유, 핵심
+        - didScroll 델리게이트에서 넘어올때는 실수 값을 받아서 x좌표의 레이아웃을 정의
+        - DidEndDecelerating 델리게이트에서 넘어올때는 정수 값을 받아서 width값도 업데이트
+        (나누는 이유: didScroll에서도 정수 값을 받아서 업데이트 하면 스크롤이 진행될때 정수이므로 실시간으로 스크롤이 안됨)
+        
+        - lastWidth를 따로 두는 이유도, didScroll에서 width값도 같이 업데이트 되는데 이 값은 이전값으로 놓기 위함
+     */
+
     func scroll(to index: Int) {
         let offset = getStartOffset(index: index)
         scrollView.setContentOffset(offset, animated: true)
@@ -58,8 +66,9 @@ extension ScrollFitable {
             $0.bottom.equalToSuperview()
         }
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: 0.2,
             delay: 0,
+            options: .curveLinear,
             animations: { self.scrollView.layoutIfNeeded() }
         )
     }
