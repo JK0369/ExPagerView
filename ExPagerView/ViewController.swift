@@ -20,10 +20,8 @@ class ViewController: UIViewController {
     
     private let items = [
         "jake",
-        "iOS 앱 개발 알아가기",
-        "PagerView 예제",
-        "UICollectionView 사용",
-        "protocol 지향 프로그래밍",
+        "iOS 앱",
+        "PagerView",
         "iOS",
         "아이폰",
         "Scroll 처리"
@@ -57,6 +55,7 @@ class ViewController: UIViewController {
         tabView.didTap = { [weak self] index in
             guard let self else { return }
             pagerView.scroll(to: index)
+            tabView.scroll(to: index)
             tabView.syncUnderlineView(index: index, underlineView: tabView.highlightView)
         }
         

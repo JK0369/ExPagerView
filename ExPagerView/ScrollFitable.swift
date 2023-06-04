@@ -16,7 +16,7 @@ protocol ScrollFitable: AnyObject {
     var scrollView: UIScrollView { get }
     var countOfItems: Int { get }
     var tabContentViews: [UIView] { get }
-    
+
     func scroll(to index: Int)
     func scroll(to ratio: Double)
 }
@@ -42,10 +42,14 @@ extension ScrollFitable {
         
         - lastWidth를 따로 두는 이유도, didScroll에서 width값도 같이 업데이트 되는데 이 값은 이전값으로 놓기 위함
      */
-
+    
     func scroll(to index: Int) {
-        let offset = getStartOffset(index: index)
-        scrollView.setContentOffset(offset, animated: false)
+        if index < tabContentViews.count {
+            scrollView.scroll(rect: tabContentViews[index].frame, animated: true)
+        } else {
+            let offset = getStartOffset(index: index)
+            scrollView.setContentOffset(offset, animated: true)
+        }
     }
     
     func scroll(to ratio: Double) {

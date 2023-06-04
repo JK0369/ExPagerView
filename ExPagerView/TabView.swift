@@ -70,10 +70,10 @@ final class TabView: UIView {
                     $0.textColor = .black
                     $0.textAlignment = .center
                     $0.isUserInteractionEnabled = true
+                    $0.tag = offset
+                    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapItem))
+                    $0.addGestureRecognizer(tapGesture)
                 }
-                label.tag = offset
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapItem))
-                label.addGestureRecognizer(tapGesture)
                 self.stackView.addArrangedSubview(label)
                 self.contentLabels.append(label)
             }
